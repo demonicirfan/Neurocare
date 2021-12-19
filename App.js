@@ -1,6 +1,5 @@
 import React from 'react';
 import { NativeBaseProvider } from 'native-base';
-
 import Navigation from './navigation/Index';
 
 const App = () => {
