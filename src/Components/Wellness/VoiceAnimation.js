@@ -4,18 +4,12 @@ import { StyleSheet } from 'react-native';
 import React from 'react';
 import { Easing } from 'react-native-reanimated';
 
-const _size = 60;
-const _color = 'white';
+const _size = 50;
+const _color = '#0063D9';
 const DiagnosisMotion = () => {
   return (
-    <Center
-      mx={'auto'}
-      w={'280px'}
-      height={'150px'}
-      bg={'blue.600'}
-      borderRadius={'2xl'}
-    >
-      <Center w={'60px'} h={'60px'} bg={_color} rounded='full' shadow={'10'}>
+    <Center mx={'auto'} w={'280px'} height={'150px'} borderRadius={'2xl'}>
+      <Center w={'50px'} h={'50px'} bg={_color} rounded='full' shadow={'10'}>
         {[...Array(5).keys()].map((index) => {
           return (
             <MotiView

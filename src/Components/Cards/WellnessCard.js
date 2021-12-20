@@ -1,10 +1,12 @@
+import { useNavigation } from '@react-navigation/native';
 import { VStack, Text } from 'native-base';
 import React from 'react';
 import { Pressable, Image } from 'react-native';
 
 const WellnessCard = () => {
+  const navigation = useNavigation();
   const onPressWellnessCard = () => {
-    console.warn('welness card pressed');
+    navigation.navigate('Wellness');
   };
 
   return (
