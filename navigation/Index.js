@@ -4,7 +4,7 @@ import DiagnosisHome from '../src/Screens/DiagnosisHome';
 import { NavigationContainer } from '@react-navigation/native';
 import { enableScreens } from 'react-native-screens';
 import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
-
+import ReminderScreen from '../src/Screens/ReminderScreen';
 const Stack = createSharedElementStackNavigator();
 const config = {
   animation: 'spring',
@@ -35,6 +35,7 @@ const Navigation = () => {
           }}
         />
         <Stack.Screen name='Diagnosis' component={DiagnosisHome} />
+        <Stack.Screen name='Reminders' component={ReminderScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

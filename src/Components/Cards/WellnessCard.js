@@ -13,16 +13,18 @@ const WellnessCard = () => {
         space='3'
         alignItems='center'
         bg={'white'}
-        shadow={'4'}
+        shadow={'6'}
         borderRadius={'xl'}
-        p={2}
+        p={5}
       >
         <Image
           source={require('./welness.png')}
-          style={{ width: 120, height: 120 }}
+          style={{ width: 72, height: 72, margin: 6 }}
         />
 
-        <Text fontSize={'xl'}>Wellness</Text>
+        <Text fontSize={'xl'} fontWeight={'700'}>
+          Wellness
+        </Text>
       </VStack>
     </Pressable>
   );

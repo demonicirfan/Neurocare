@@ -7,7 +7,7 @@ const DiagnosisStill = () => {
       justify={'center'}
       align={'center'}
       w={'280px'}
-      height={'140px'}
+      height={'150px'}
       bg={'blue.600'}
       borderRadius={'2xl'}
     >

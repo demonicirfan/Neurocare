@@ -9,7 +9,7 @@ const DiagnosisHome = () => {
   const navigation = useNavigation();
   return (
     <Pressable onPress={() => navigation.navigate('Diagnosis')}>
-      <Box mx={'auto'} borderRadius={'xl'}>
+      <Box mx={'auto'}>
         <SharedElement id={'stillSharedElement'}>
           <DiagnosisStill />
         </SharedElement>

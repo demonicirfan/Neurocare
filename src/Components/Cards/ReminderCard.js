@@ -1,10 +1,12 @@
+import { useNavigation } from '@react-navigation/native';
 import { VStack, Text } from 'native-base';
 import React from 'react';
 import { Image, Pressable } from 'react-native';
 
-const ProfileCard = () => {
+const ReminderCard = () => {
+  const navigation = useNavigation();
   const onPressProfileCard = () => {
-    console.warn('Profile card pressed');
+    navigation.navigate('Reminders');
   };
   return (
     <Pressable onPress={onPressProfileCard}>
@@ -14,16 +16,18 @@ const ProfileCard = () => {
         bg={'white'}
         shadow={'6'}
         borderRadius={'xl'}
-        p={2}
+        p={5}
       >
         <Image
-          source={require('./profile.png')}
-          style={{ width: 80, height: 80, margin: 20 }}
+          source={require('./Reminder.png')}
+          style={{ width: 72, height: 72, margin: 6 }}
         />
-        <Text fontSize={'xl'}>Profile</Text>
+        <Text fontSize={'xl'} fontWeight={'700'}>
+          Reminder
+        </Text>
       </VStack>
     </Pressable>
   );
 };
 
-export default ProfileCard;
+export default ReminderCard;
