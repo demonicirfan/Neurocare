@@ -1,5 +1,5 @@
 import React from 'react';
-import { HStack, Text, Icon, IconButton } from 'native-base';
+import { HStack, Text, Icon, IconButton, VStack } from 'native-base';
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -12,12 +12,16 @@ const Header = (props) => {
       justifyContent='space-between'
       width={'100%'}
       px={'4'}
+      py={'4'}
     >
-      <Text fontSize='2xl' fontWeight={'600'}>
-        {props.title}
-      </Text>
+      <VStack>
+        <Text fontSize='2xl' fontWeight={'600'}>
+          {props.title}
+        </Text>
+        <Text color={'blue.500'}>{props.phoneNumber}</Text>
+      </VStack>
       <IconButton
-        variant='solid'
+        size={'sm'}
         style={{ transform: [{ rotate: '45deg' }] }}
         bg={'gray.400'}
         rounded={'full'}

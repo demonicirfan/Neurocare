@@ -11,6 +11,7 @@ const ProfileHome = () => {
       mt={'16'}
       borderRadius='md'
       padding={'4'}
+      mb={'4'}
     >
       <VStack>
         <Text fontSize={'2xl'}>Hey</Text>
