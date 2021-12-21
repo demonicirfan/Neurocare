@@ -1,6 +1,10 @@
-import { Center, Text, FlatList, Image } from 'native-base';
+import { Center, FlatList, Image } from 'native-base';
 import React from 'react';
+import { Dimensions } from 'react-native';
 import Header from './Header';
+
+var height = Dimensions.get('window').height;
+var width = Dimensions.get('window').width;
 
 const ContactDetail = ({ route }) => {
   const data = route.params.data;
@@ -13,8 +17,8 @@ const ContactDetail = ({ route }) => {
         source={{ uri: item }}
         resizeMode='cover'
         m={'4'}
-        w={'64'}
-        h={'56'}
+        w={width * 0.6}
+        h={height * 0.4}
       />
     );
   };

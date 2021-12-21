@@ -7,7 +7,7 @@ import ProfileButton from '../Components/Profile/ProfileButton.js';
 
 const HomeScreen = () => {
   return (
-    <VStack bg={'neurocare.orange1'}>
+    <VStack bg={'neurocare.orange1'} h={'full'}>
       <ProfileHome />
       <Diagnosis />
       <Card />

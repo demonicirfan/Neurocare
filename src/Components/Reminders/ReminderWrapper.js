@@ -1,4 +1,4 @@
-import { Center, Heading, VStack, Text } from 'native-base';
+import { Center, VStack, Text } from 'native-base';
 import React from 'react';
 
 import { Dimensions } from 'react-native';
@@ -40,7 +40,9 @@ const ReminderWrapper = (props) => {
           elevation: 8,
         }}
       >
-        <Text>{props.timing}</Text>
+        <Text fontFamily={'Poppins'} color={'white'}>
+          {props.timing}
+        </Text>
       </Center>
     </VStack>
   );

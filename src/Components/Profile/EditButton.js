@@ -1,13 +1,17 @@
 import { Pressable, Text } from 'native-base';
 import React from 'react';
+import { Dimensions } from 'react-native';
+
+var width = Dimensions.get('window').width;
+var height = Dimensions.get('window').height;
 
 const LogoutButton = () => {
   return (
     <Pressable
       bg={'yellow.500'}
-      w={'20'}
-      h={'8'}
-      ml={'8'}
+      w={width * 0.26}
+      h={height * 0.055}
+      ml={'8%'}
       mr={'80%'}
       rounded={'full'}
       alignItems={'center'}
@@ -15,7 +19,7 @@ const LogoutButton = () => {
         console.warn('edit pressed');
       }}
     >
-      <Text fontSize={'2xl'} color={'white'}>
+      <Text m={'auto'} fontSize={'2xl'} color={'white'} fontFamily={'Poppins'}>
         Edit
       </Text>
     </Pressable>

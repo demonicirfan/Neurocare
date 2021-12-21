@@ -70,13 +70,13 @@ const ReminderScreen = () => {
                   title={'Coffee'}
                   description={'Prepare hot coffee for friends'}
                   timing={'Today, 4:30'}
-                  color={'blue.300'}
+                  color={'neurocare.blue'}
                 />
                 <ReminderWrapper
                   title={'Coffee'}
                   description={'Prepare hot coffee for friends'}
                   timing={'Today, 4:30'}
-                  color={'orange.200'}
+                  color={'neurocare.orange3'}
                 />
               </Wrap>
             </VStack>
@@ -90,37 +90,37 @@ const ReminderScreen = () => {
                   title={'Coffee'}
                   description={'Prepare hot coffee for friends'}
                   timing={'Today, 4:30'}
-                  color={'orange.200'}
+                  color={'neurocare.orange3'}
                 />
                 <ReminderWrapper
                   title={'Coffee'}
                   description={'Prepare hot coffee for friends '}
                   timing={'Today, 4:30'}
-                  color={'green.300'}
+                  color={'neurocare.green'}
                 />
                 <ReminderWrapper
                   title={'Coffee'}
                   description={'Prepare hot coffee for friends'}
                   timing={'Today, 4:30'}
-                  color={'red.300'}
+                  color={'neurocare.blue'}
                 />
                 <ReminderWrapper
                   title={'Coffee'}
                   description={'Prepare hot coffee for friends'}
                   timing={'Today, 4:30'}
-                  color={'blue.300'}
+                  color={'neurocare.orange3'}
                 />
                 <ReminderWrapper
                   title={'Coffee'}
                   description={'Prepare hot coffee for friends'}
                   timing={'Today, 4:30'}
-                  color={'blue.300'}
+                  color={'neurocare.green'}
                 />
                 <ReminderWrapper
                   title={'Coffee'}
                   description={'Prepare hot coffee for friends'}
                   timing={'Today, 4:30'}
-                  color={'blue.300'}
+                  color={'neurocare.blue'}
                 />
               </Wrap>
             </VStack>

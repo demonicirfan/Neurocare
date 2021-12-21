@@ -7,7 +7,7 @@ import LogoutButton from '../Components/Profile/LogoutButton';
 
 const ProfilePage = () => {
   return (
-    <VStack>
+    <VStack bg={'neurocare.orange1'} h={'full'}>
       <ProfileHome />
       <EditButton />
       <Details />
