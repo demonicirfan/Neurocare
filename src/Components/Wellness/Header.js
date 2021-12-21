@@ -2,6 +2,7 @@ import React from 'react';
 import { HStack, Text, Icon, IconButton, VStack } from 'native-base';
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import GoBack from '../GoBack';
 
 const Header = (props) => {
   const navigation = useNavigation();
@@ -20,16 +21,7 @@ const Header = (props) => {
         </Text>
         <Text color={'blue.500'}>{props.phoneNumber}</Text>
       </VStack>
-      <IconButton
-        size={'sm'}
-        style={{ transform: [{ rotate: '45deg' }] }}
-        bg={'gray.400'}
-        rounded={'full'}
-        icon={<Icon size='sm' as={AntDesign} name='plus' color={'black'} />}
-        onPress={() => {
-          navigation.goBack();
-        }}
-      />
+      <GoBack />
     </HStack>
   );
 };

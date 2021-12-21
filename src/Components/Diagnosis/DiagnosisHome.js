@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
-import { Box } from 'native-base';
+import { Box, Pressable } from 'native-base';
 import React from 'react';
-import { Pressable } from 'react-native';
 import DiagnosisStill from './DiagnosisStill';
 import { SharedElement } from 'react-native-shared-element';
 

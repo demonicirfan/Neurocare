@@ -1,26 +1,29 @@
 import { MotiView } from 'moti';
 import { Center } from 'native-base';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import React from 'react';
 import { Easing } from 'react-native-reanimated';
 
-const _size = 60;
+var height = Dimensions.get('window').height;
+var width = Dimensions.get('window').width;
+
+const _size = 80;
 const _color = 'white';
 const DiagnosisMotion = () => {
   return (
     <Center
       mx={'auto'}
-      w={'280px'}
-      height={'150px'}
+      w={width * 0.88}
+      height={width * 0.47}
       bg={'blue.600'}
       borderRadius={'2xl'}
     >
-      <Center w={'60px'} h={'60px'} bg={_color} rounded='full' shadow={'10'}>
+      <Center w={'80px'} h={'80px'} bg={_color} rounded='full' shadow={'10'}>
         {[...Array(5).keys()].map((index) => {
           return (
             <MotiView
               from={{ opacity: 0.6, scale: 1 }}
-              animate={{ opacity: 0, scale: 4 }}
+              animate={{ opacity: 0, scale: 3 }}
               transition={{
                 type: 'timing',
                 duration: 4000,

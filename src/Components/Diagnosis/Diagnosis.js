@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
-import { VStack, Center, Text, Pressable } from 'native-base';
+import { VStack, Center, Text, Pressable, Box } from 'native-base';
 import { MotiView } from 'moti';
-
+import { Dimensions } from 'react-native';
 import BottomSheet from 'reanimated-bottom-sheet';
 import DiagnosisMotion from './DiagnosisMotion';
 import DiagnosisStill from './DiagnosisStill';
 import Results from './Results';
+import ModelHeader from '../Model/ModelHeader';
+import GoBack from '../GoBack.js';
+
+var height = Dimensions.get('window').height;
+var width = Dimensions.get('window').width;
 
 const Diagnosis = () => {
   const [diagnosisStarted, setDiagnosisStarted] = useState(false);
@@ -14,22 +19,16 @@ const Diagnosis = () => {
   };
 
   const renderContent = () => <Results />;
-  const renderHeader = () => (
-    <Center
-      w={'40px'}
-      h={'4px'}
-      bg={'gray.300'}
-      position={'absolute'}
-      left={'44%'}
-      mt={'15px'}
-      rounded={'full'}
-    />
-  );
+  const renderHeader = () => <ModelHeader />;
 
   const sheetRef = React.useRef();
 
   return (
     <>
+      <Box position={'absolute'} top={'16'} right={'6'} zIndex={3}>
+        <GoBack />
+      </Box>
+
       <Center
         backgroundColor={'blue.600'}
         align={'center'}
@@ -39,7 +38,7 @@ const Diagnosis = () => {
       >
         <BottomSheet
           ref={sheetRef}
-          snapPoints={[450, 370, 0]}
+          snapPoints={[height * 0.73, height * 0.52, 0]}
           initialSnap={2}
           borderRadius={24}
           renderContent={renderContent}
@@ -52,15 +51,21 @@ const Diagnosis = () => {
               <Pressable
                 style={{ paddingTop: 0 }}
                 onPress={() => sheetRef.current.snapTo(0)}
+                px={'4'}
               >
                 <Center
                   rounded='full'
-                  backgroundColor={'#FBBB33'}
+                  backgroundColor={'neurocare.orange3'}
                   px={'90px'}
                   py={'10px'}
                   shadow={'8'}
                 >
-                  <Text color={'white'} mx={'auto'} fontSize={'24'}>
+                  <Text
+                    color={'white'}
+                    mx={'auto'}
+                    fontSize={'24'}
+                    fontFamily={'Poppins'}
+                  >
                     RESULT
                   </Text>
                 </Center>
@@ -69,7 +74,11 @@ const Diagnosis = () => {
           ) : (
             <>
               <DiagnosisStill />
-              <Pressable style={{ paddingTop: 0 }} onPress={diagnosisSwitch}>
+              <Pressable
+                style={{ paddingTop: 0 }}
+                onPress={diagnosisSwitch}
+                px={'4'}
+              >
                 <MotiView
                   from={{
                     translateY: 90,
@@ -80,12 +89,17 @@ const Diagnosis = () => {
                 >
                   <Center
                     rounded='full'
-                    backgroundColor={'#FBBB33'}
+                    backgroundColor={'neurocare.orange3'}
                     px={'90px'}
                     py={'10px'}
                     shadow={'8'}
                   >
-                    <Text color={'white'} mx={'auto'} fontSize={'24'}>
+                    <Text
+                      color={'white'}
+                      mx={'auto'}
+                      fontSize={'24'}
+                      fontFamily={'Poppins'}
+                    >
                       START
                     </Text>
                   </Center>
