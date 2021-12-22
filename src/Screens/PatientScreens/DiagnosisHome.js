@@ -1,6 +1,6 @@
 import { Box } from 'native-base';
 import React from 'react';
-import Diagnosis from '../Components/Diagnosis/Diagnosis';
+import Diagnosis from '../../Components/Diagnosis/Diagnosis';
 
 const DiagnosisHome = () => {
   return (

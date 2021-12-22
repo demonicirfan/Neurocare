@@ -1,7 +1,7 @@
 import { Center, FlatList, Image } from 'native-base';
 import React from 'react';
 import { Dimensions } from 'react-native';
-import Header from './Header';
+import Header from '../../Components/Wellness/Header';
 
 var height = Dimensions.get('window').height;
 var width = Dimensions.get('window').width;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Center, Box, FlatList, Pressable, Text, Image } from 'native-base';
-import data from './Data';
+import data from '../../../Data/ContactsData';
 
 var height = Dimensions.get('window').height;
 var width = Dimensions.get('window').width;

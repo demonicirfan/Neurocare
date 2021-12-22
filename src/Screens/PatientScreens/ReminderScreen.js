@@ -4,25 +4,20 @@ import {
   VStack,
   Heading,
   Wrap,
-  Pressable,
   Button,
   ScrollView,
 } from 'native-base';
 import React from 'react';
-import ReminderWrapper from '../Components/Reminders/ReminderWrapper';
-import { Entypo } from '@expo/vector-icons';
+import ReminderWrapper from '../../Components/Reminders/ReminderWrapper';
 import BottomSheet from 'reanimated-bottom-sheet';
-import AddReminder from '../Components/Reminders/AddReminder';
+import AddReminder from '../../Components/Reminders/AddReminder';
 import { Dimensions } from 'react-native';
-import ModelHeader from '../Components/Model/ModelHeader';
-import { useNavigation } from '@react-navigation/native';
-import GoBack from '../Components/GoBack';
+import ModelHeader from '../../Components/Model/ModelHeader';
+import GoBack from '../../Components/GoBack';
 
-var height = Dimensions.get('window').height;
 var width = Dimensions.get('window').width;
 
 const ReminderScreen = () => {
-  const navigation = useNavigation();
   const renderContent = () => <AddReminder />;
   const renderHeader = () => <ModelHeader />;
 
