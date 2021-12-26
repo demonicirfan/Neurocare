@@ -9,13 +9,14 @@ import {
   ProfilePage,
   DiagnosisHome,
 } from '../src/Screens/PatientScreens/Index';
-
+import CareTakerHomeScreen from '../src/Screens/CaretakerScreens/HomeScreen.js';
 const Stack = createStackNavigator();
 
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home' headerMode='none'>
+      <Stack.Navigator initialRouteName='CTHome' headerMode='none'>
+        <Stack.Screen name='CTHome' component={CareTakerHomeScreen} />
         <Stack.Screen name='Home' component={HomeScreen} />
         <Stack.Screen name='Diagnosis' component={DiagnosisHome} />
         <Stack.Screen name='Reminders' component={ReminderScreen} />

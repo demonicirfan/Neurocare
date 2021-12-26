@@ -5,7 +5,7 @@ import { Dimensions } from 'react-native';
 var width = Dimensions.get('window').width;
 var height = Dimensions.get('window').height;
 
-const LogoutButton = () => {
+const EditButton = () => {
   return (
     <Pressable
       bg={'yellow.500'}
@@ -26,4 +26,4 @@ const LogoutButton = () => {
   );
 };
 
-export default LogoutButton;
+export default EditButton;

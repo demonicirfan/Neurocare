@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, VStack, HStack, Avatar, FlatList } from 'native-base';
-import Data from '../../../Data/ProfileData';
+import Data from '../../../../Data/ProfileData';
 import { Dimensions } from 'react-native';
 
 var width = Dimensions.get('window').width;

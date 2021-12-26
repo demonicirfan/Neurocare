@@ -1,9 +1,11 @@
 import React from 'react';
 import { VStack } from 'native-base';
 import Diagnosis from '../../Components/Diagnosis/DiagnosisHome.js';
-import ProfileHome from '../../Components/Profile/ProfileHome';
-import Card from '../../Components/Cards/Index';
-import ProfileButton from '../../Components/Profile/ProfileButton.js';
+import Card from '../../Components/Cards/Patient/Index';
+import {
+  ProfileButton,
+  ProfileHome,
+} from '../../Components/Profile/Patient/Index';
 
 const HomeScreen = () => {
   return (
