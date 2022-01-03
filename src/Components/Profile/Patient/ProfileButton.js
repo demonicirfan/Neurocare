@@ -18,6 +18,7 @@ function ProfileButton() {
       onPress={() => {
         navigation.navigate('Profile');
       }}
+      mb={'4'}
     >
       <HStack
         space='3'

@@ -1,5 +1,5 @@
 import React from 'react';
-import { VStack } from 'native-base';
+import { VStack, ScrollView } from 'native-base';
 import Diagnosis from '../../Components/Diagnosis/DiagnosisHome.js';
 import Card from '../../Components/Cards/Patient/Index';
 import {
@@ -9,12 +9,18 @@ import {
 
 const HomeScreen = () => {
   return (
-    <VStack bg={'neurocare.orange1'} h={'full'}>
-      <ProfileHome />
-      <Diagnosis />
-      <Card />
-      <ProfileButton />
-    </VStack>
+    <ScrollView
+      bg={'neurocare.orange1'}
+      h={'full'}
+      showsVerticalScrollIndicator={false}
+    >
+      <VStack>
+        <ProfileHome />
+        <Diagnosis />
+        <Card />
+        <ProfileButton />
+      </VStack>
+    </ScrollView>
   );
 };
 
