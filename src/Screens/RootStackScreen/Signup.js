@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Text,
   Center,
   Button,
-  Checkbox,
   VStack,
   HStack,
   IconButton,
   Icon,
   FormControl,
   Input,
+  Radio,
 } from 'native-base';
 import { Dimensions } from 'react-native';
 import {
@@ -24,37 +24,56 @@ var height = Dimensions.get('window').height;
 var width = Dimensions.get('window').width;
 
 const Signup = () => {
-  const [formData, setData] = React.useState({});
-  const [errors, setErrors] = React.useState({});
-  const [show, setShow] = React.useState(false);
+  const [formData, setFormData] = useState({
+    userName: '',
+    email: '',
+    password: '',
+    isPatient: true,
+  });
+  const [show, setShow] = useState(false);
 
   const navigation = useNavigation();
-  const onPressLogin = () => {
-    navigation.navigate('Login');
+  const { signUp } = useContext(AuthContext);
+
+  const handleEmail = (val) => {
+    if (val.length !== 0) {
+      setFormData({
+        ...data,
+        email: val,
+      });
+    }
+  };
+  const handlePassword = (val) => {
+    if (val.length !== 0) {
+      setFormData({
+        ...data,
+        password: val,
+      });
+    }
+  };
+
+  const patientClientHandler = () => {
+    setFormData({
+      ...data,
+      isPatient: value,
+    });
+  };
+
+  const handleConfirmPassword = (val) => {
+    if (val.length == formData.password) {
+      console.warn('Password confirmed');
+    } else console.warn('Password did not match');
+  };
+
+  const handleSignup = () => {
+    signUp();
+  };
+
+  const handleLogin = () => {
+    navigation.navigate('LogInScreen');
   };
 
   const handleEyeClick = () => setShow(!show);
-
-  const validate = () => {
-    if (formData.name === undefined) {
-      setErrors({
-        ...errors,
-        name: 'Name is required',
-      });
-      return false;
-    } else if (formData.name.length < 3) {
-      setErrors({
-        ...errors,
-        name: 'Name is too short',
-      });
-      return false;
-    }
-    return true;
-  };
-
-  const onSubmit = () => {
-    validate() ? console.log('Submitted') : console.log('Validation Failed');
-  };
 
   return (
     <Center h={'full'}>
@@ -102,7 +121,7 @@ const Signup = () => {
           <Text fontSize='sm'>or Sign Up with email</Text>
         </Center>
         <VStack>
-          <FormControl isRequired isInvalid={'name' in errors}>
+          <FormControl isRequired>
             <Input
               Input
               placeholder='Email'
@@ -113,7 +132,7 @@ const Signup = () => {
               bg={'neurocare.orange2'}
               borderWidth={'0'}
               borderRadius={'12px'}
-              onChangeText={(value) => setData({ ...formData, name: value })}
+              onChangeText={handleEmail(value)}
               InputRightElement={
                 <IconButton
                   rounded={'full'}
@@ -155,7 +174,7 @@ const Signup = () => {
               ></FormControl.HelperText>
             )}
           </FormControl>
-          <FormControl isRequired isInvalid={'name' in errors}>
+          <FormControl isRequired>
             <Input
               rounded={'lg'}
               bg={'neurocare.orange2'}
@@ -197,9 +216,10 @@ const Signup = () => {
                 </IconButton>
               }
               placeholder='Password'
+              onChangeText={handlePassword(value)}
             />
           </FormControl>
-          <FormControl isRequired isInvalid={'name' in errors} pt={2}>
+          <FormControl isRequired pt={2}>
             <Input
               rounded={'lg'}
               bg={'neurocare.orange2'}
@@ -241,10 +261,25 @@ const Signup = () => {
                 </IconButton>
               }
               placeholder='Confirm Password'
+              onChangeText={handleConfirmPassword(value)}
             />
           </FormControl>
+          <Radio.Group
+            isRequired
+            name='myRadioGroup'
+            accessibilityLabel='favorite number'
+            value={value}
+            onChange={patientClientHandler(value)}
+          >
+            <Radio value='true' my={1}>
+              Patient
+            </Radio>
+            <Radio value='false' my={1}>
+              Caretaker
+            </Radio>
+          </Radio.Group>
           <Button
-            onPress={onSubmit}
+            onPress={() => setShowModal(true)}
             mt='5'
             py={height * 0.02}
             rounded={'full'}
@@ -259,7 +294,7 @@ const Signup = () => {
           mx={'auto'}
           w={width * 0.8}
         >
-          <Text fontSize={'md'} onPress={onPressLogin}>
+          <Text fontSize={'md'} onPress={handleLogin}>
             Already have an account?
             <Text color={'neurocare.blue'} fontWeight={'bold'}>
               {' '}

@@ -1,11 +1,13 @@
 import { Pressable, Text } from 'native-base';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Dimensions } from 'react-native';
+import { AuthContext } from '../../../Hooks/createContext';
 
 var width = Dimensions.get('window').width;
 var height = Dimensions.get('window').height;
 
 const LogoutButton = () => {
+  const { signOut } = useContext(AuthContext);
   return (
     <Pressable
       bg={'blue.500'}
@@ -16,7 +18,7 @@ const LogoutButton = () => {
       h={height * 0.07}
       mt={height * 0.12}
       onPress={() => {
-        console.warn('logout pressed');
+        signOut();
       }}
     >
       <Text m={'auto'} fontSize={'2xl'} color={'white'} fontFamily={'Poppins'}>

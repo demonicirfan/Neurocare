@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
   Text,
   Center,
@@ -15,44 +16,54 @@ import {
 import { Dimensions, Image } from 'react-native';
 import { AntDesign, Fontisto, Feather } from '@expo/vector-icons';
 
+import { AuthContext } from '../../Hooks/createContext';
+
 var height = Dimensions.get('window').height;
 var width = Dimensions.get('window').width;
-import ForgotImage from './forgot.png';
-import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
-  const [formData, setData] = useState({});
-  const [errors, setErrors] = useState({});
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
   const [show, setShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
+  const { signIn } = useContext(AuthContext);
   const navigation = useNavigation();
-  const onPressSignup = () => {
-    navigation.navigate('Signup');
+
+  const handleEmail = (val) => {
+    if (val.length !== 0) {
+      setFormData({
+        ...data,
+        email: val,
+      });
+    }
+  };
+
+  const handlePassword = (val) => {
+    if (val.length !== 0) {
+      setFormData({
+        ...data,
+        password: val,
+      });
+    }
+  };
+
+  const handleLogin = (email, password) => {
+    signIn(email, password);
+  };
+
+  const handleSignup = () => {
+    navigation.navigate('SignUpScreen');
+  };
+
+  const handleContinue = () => {
+    console.warn('continue');
   };
 
   const handleEyeClick = () => setShow(!show);
-
-  const validate = () => {
-    if (formData.name === undefined) {
-      setErrors({
-        ...errors,
-        name: 'Name is required',
-      });
-      return false;
-    } else if (formData.name.length < 3) {
-      setErrors({
-        ...errors,
-        name: 'Name is too short',
-      });
-      return false;
-    }
-    return true;
-  };
-
-  const onSubmit = () => {
-    validate() ? console.log('Submitted') : console.log('Validation Failed');
-  };
 
   return (
     <Center h={'full'}>
@@ -108,7 +119,7 @@ const Login = () => {
           <Text fontSize='sm'>or login with email</Text>
         </Center>
         <VStack space={'1'}>
-          <FormControl isRequired isInvalid={'name' in errors}>
+          <FormControl isRequired>
             <Input
               placeholder='Email'
               rounded={'xl'}
@@ -117,22 +128,10 @@ const Login = () => {
               py={height * 0.015}
               bg={'neurocare.orange2'}
               borderWidth={'0'}
-              onChangeText={(value) => setData({ ...formData, name: value })}
+              onChangeText={(value) => handleEmail(value)}
             />
-            {'name' in errors ? (
-              <FormControl.ErrorMessage
-                pl={'4'}
-                _text={{ fontSize: 'xs', color: 'error.500', fontWeight: 500 }}
-              >
-                Error
-              </FormControl.ErrorMessage>
-            ) : (
-              <FormControl.HelperText
-                _text={{ fontSize: 'xs' }}
-              ></FormControl.HelperText>
-            )}
           </FormControl>
-          <FormControl isRequired isInvalid={'name' in errors}>
+          <FormControl isRequired>
             <Input
               rounded={'lg'}
               bg={'neurocare.orange2'}
@@ -174,22 +173,11 @@ const Login = () => {
                 </IconButton>
               }
               placeholder='Password'
+              onChangeText={(value) => handlePassword(value)}
             />
-            {'name' in errors ? (
-              <FormControl.ErrorMessage
-                pl={'4'}
-                _text={{ fontSize: 'sm', color: 'error.500', fontWeight: 400 }}
-              >
-                Incorrect Password
-              </FormControl.ErrorMessage>
-            ) : (
-              <FormControl.HelperText
-                _text={{ fontSize: 'xs' }}
-              ></FormControl.HelperText>
-            )}
           </FormControl>
           <Button
-            onPress={onSubmit}
+            onPress={handleLogin(formData.email, formData.password)}
             mt='5'
             py={height * 0.02}
             rounded={'full'}
@@ -235,7 +223,6 @@ const Login = () => {
                     placeholder='@'
                     rounded={'full'}
                     px='6'
-                    py={height * 0.015}
                     fontSize={'md'}
                     bg={'neurocare.orange2'}
                     borderWidth={'0'}
@@ -245,9 +232,9 @@ const Login = () => {
               <Modal.Footer pt={'0'} alignItems={'center'} bg={'white'}>
                 <VStack space={2} alignItems={'center'} w={'full'}>
                   <Button
-                    onPress={onSubmit}
+                    onPress={handleContinue}
                     mt='2'
-                    py={height * 0.02}
+                    py='3'
                     w={'full'}
                     rounded={'full'}
                     bg='neurocare.blue'
@@ -281,7 +268,7 @@ const Login = () => {
           <Text fontSize={'md'}>
             Do not have an acount?
             <Text
-              onPress={onPressSignup}
+              onPress={handleSignup}
               color={'neurocare.blue'}
               fontWeight={'bold'}
             >
