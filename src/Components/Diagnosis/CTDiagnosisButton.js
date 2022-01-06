@@ -1,4 +1,4 @@
-import { Icon, Pressable, HStack, VStack, Text, IconButton } from 'native-base';
+import { Icon, Pressable, HStack, VStack, Text } from 'native-base';
 import React from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';

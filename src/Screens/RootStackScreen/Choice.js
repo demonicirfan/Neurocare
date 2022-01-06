@@ -18,23 +18,38 @@ const ChoiceScreen = () => {
     navigation.navigate('CTHome');
   };
   return (
-    <VStack bg={'white'} alignItems={'center'}>
+    <VStack
+      borderColor={'white'}
+      borderWidth={'4px'}
+      borderRadius={'28'}
+      h='100%'
+      alignItems={'center'}
+      space={'2'}
+      pt={'4'}
+      bg={'#EBEBEB'}
+    >
       <VStack>
-        <Text fontSize={'3xl'} fontWeight={'600'} mt={'4'} alignSelf={'center'}>
-          Signup As
+        <Text
+          fontSize={'4xl'}
+          fontWeight={'700'}
+          mt={'6'}
+          alignSelf={'center'}
+          color={'neurocare.orange3'}
+        >
+          SignUp As
         </Text>
         <Text
           fontSize={'md'}
           fontWeight={'400'}
-          mt={'2'}
+          mt={'4'}
           alignSelf={'center'}
           textAlign={'center'}
-          maxW={'160px'}
+          maxW={'200px'}
         >
           Who do you want to Signup as to neurocare app
         </Text>
       </VStack>
-      <HStack space='3' mx={'auto'} py={'10'}>
+      <HStack space='8' mx={'auto'} py={'10'}>
         <Shadow
           distance={'22'}
           offset={[0, 20]}
@@ -89,7 +104,7 @@ const ChoiceScreen = () => {
                       }}
                     >
                       <Image
-                        source={require('./forgot.png')}
+                        source={require('../../Components/Cards/Patient/welness.png')}
                         style={{
                           width: width * 0.13,
                           height: width * 0.13,
@@ -164,7 +179,7 @@ const ChoiceScreen = () => {
                       }}
                     >
                       <Image
-                        source={require('./forgot.png')}
+                        source={require('./caretaker.png')}
                         style={{
                           width: width * 0.13,
                           height: width * 0.13,

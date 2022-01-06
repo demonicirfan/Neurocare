@@ -36,7 +36,7 @@ const Login = () => {
   const handleEmail = (val) => {
     if (val.length !== 0) {
       setFormData({
-        ...data,
+        ...formData,
         email: val,
       });
     }
@@ -45,7 +45,7 @@ const Login = () => {
   const handlePassword = (val) => {
     if (val.length !== 0) {
       setFormData({
-        ...data,
+        ...formData,
         password: val,
       });
     }
@@ -56,7 +56,7 @@ const Login = () => {
   };
 
   const handleSignup = () => {
-    navigation.navigate('SignUpScreen');
+    navigation.navigate('SignUp');
   };
 
   const handleContinue = () => {

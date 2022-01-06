@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import {
   Text,
   Center,
@@ -19,6 +19,10 @@ import {
   MaterialIcons,
 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from '../../Hooks/createContext';
+import BottomSheet from 'reanimated-bottom-sheet';
+import ModelHeader from '../../Components/Model/ModelHeader';
+import { Choice } from './Index';
 
 var height = Dimensions.get('window').height;
 var width = Dimensions.get('window').width;
@@ -38,7 +42,7 @@ const Signup = () => {
   const handleEmail = (val) => {
     if (val.length !== 0) {
       setFormData({
-        ...data,
+        ...formData,
         email: val,
       });
     }
@@ -46,16 +50,16 @@ const Signup = () => {
   const handlePassword = (val) => {
     if (val.length !== 0) {
       setFormData({
-        ...data,
+        ...formData,
         password: val,
       });
     }
   };
 
-  const patientClientHandler = () => {
+  const patientClientHandler = (val) => {
     setFormData({
-      ...data,
-      isPatient: value,
+      ...formData,
+      isPatient: val,
     });
   };
 
@@ -70,13 +74,26 @@ const Signup = () => {
   };
 
   const handleLogin = () => {
-    navigation.navigate('LogInScreen');
+    navigation.navigate('LogIn');
   };
 
   const handleEyeClick = () => setShow(!show);
 
+  const renderContent = () => <Choice />;
+  const renderHeader = () => <ModelHeader />;
+
+  const sheetRef = useRef();
+
   return (
     <Center h={'full'}>
+      <BottomSheet
+        ref={sheetRef}
+        snapPoints={[height * 0.68, height * 0.42, 0]}
+        initialSnap={2}
+        borderRadius={24}
+        renderContent={renderContent}
+        renderHeader={renderHeader}
+      />
       <VStack space='5'>
         <HStack
           w={width * 0.8}
@@ -132,7 +149,7 @@ const Signup = () => {
               bg={'neurocare.orange2'}
               borderWidth={'0'}
               borderRadius={'12px'}
-              onChangeText={handleEmail(value)}
+              onChangeText={(value) => handleEmail(value)}
               InputRightElement={
                 <IconButton
                   rounded={'full'}
@@ -158,21 +175,6 @@ const Signup = () => {
                 backgroundColor: 'neurocare.orange2',
               }}
             />
-            {'name' in errors ? (
-              <FormControl.ErrorMessage
-                _text={{
-                  fontSize: 'xs',
-                  color: 'error.500',
-                  fontWeight: 500,
-                }}
-              >
-                Error
-              </FormControl.ErrorMessage>
-            ) : (
-              <FormControl.HelperText
-                _text={{ fontSize: 'xs' }}
-              ></FormControl.HelperText>
-            )}
           </FormControl>
           <FormControl isRequired>
             <Input
@@ -216,7 +218,7 @@ const Signup = () => {
                 </IconButton>
               }
               placeholder='Password'
-              onChangeText={handlePassword(value)}
+              onChangeText={(value) => handlePassword(value)}
             />
           </FormControl>
           <FormControl isRequired pt={2}>
@@ -261,15 +263,14 @@ const Signup = () => {
                 </IconButton>
               }
               placeholder='Confirm Password'
-              onChangeText={handleConfirmPassword(value)}
+              onChangeText={(value) => handleConfirmPassword(value)}
             />
           </FormControl>
-          <Radio.Group
+          {/* <Radio.Group
             isRequired
             name='myRadioGroup'
             accessibilityLabel='favorite number'
-            value={value}
-            onChange={patientClientHandler(value)}
+            onChange={(value) => patientClientHandler(value)}
           >
             <Radio value='true' my={1}>
               Patient
@@ -277,9 +278,10 @@ const Signup = () => {
             <Radio value='false' my={1}>
               Caretaker
             </Radio>
-          </Radio.Group>
+          </Radio.Group> */}
+
           <Button
-            onPress={() => setShowModal(true)}
+            onPress={() => sheetRef.current.snapTo(0)}
             mt='5'
             py={height * 0.02}
             rounded={'full'}

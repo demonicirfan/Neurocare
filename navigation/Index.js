@@ -10,7 +10,7 @@ import {
   DiagnosisHome,
   Info,
 } from '../src/Screens/PatientScreens/Index';
-// import { CaretakerHome } from '../src/Screens/CaretakerScreens';
+import { CaretakerHome } from '../src/Screens/CaretakerScreens/Index';
 import {
   SplashScreen,
   LogInScreen,
@@ -22,6 +22,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from '../src/Hooks/createContext';
 
 const Stack = createStackNavigator();
+const isPatient = false;
+
 const Navigation = () => {
   const initialLoginState = {
     isLoading: true,
@@ -109,19 +111,31 @@ const Navigation = () => {
   if (loginState.isLoading) {
     return <SplashScreen />;
   }
+
   return (
     <AuthContext.Provider value={authContext}>
       <NavigationContainer>
         {loginState.userToken !== null ? (
-          <Stack.Navigator initialRouteName='PatientHome' headerMode='none'>
-            <Stack.Screen name='PatientHome' component={HomeScreen} />
-            <Stack.Screen name='Info' component={Info} />
-            <Stack.Screen name='Diagnosis' component={DiagnosisHome} />
-            <Stack.Screen name='Reminders' component={ReminderScreen} />
-            <Stack.Screen name='Wellness' component={WellnessScreen} />
-            <Stack.Screen name='Detail' component={ContactDetail} />
-            <Stack.Screen name='Profile' component={ProfilePage} />
-          </Stack.Navigator>
+          <>
+            {isPatient == true ? (
+              <Stack.Navigator initialRouteName='PatientHome' headerMode='none'>
+                <Stack.Screen name='PatientHome' component={HomeScreen} />
+                <Stack.Screen name='Info' component={Info} />
+                <Stack.Screen name='Diagnosis' component={DiagnosisHome} />
+                <Stack.Screen name='Reminders' component={ReminderScreen} />
+                <Stack.Screen name='Wellness' component={WellnessScreen} />
+                <Stack.Screen name='Detail' component={ContactDetail} />
+                <Stack.Screen name='Profile' component={ProfilePage} />
+              </Stack.Navigator>
+            ) : (
+              <Stack.Navigator
+                initialRouteName='CaretakerHome'
+                headerMode='none'
+              >
+                <Stack.Screen name='CaretakerHome' component={CaretakerHome} />
+              </Stack.Navigator>
+            )}
+          </>
         ) : (
           <Stack.Navigator initialRouteName='SplashScreen' headerMode='none'>
             <Stack.Screen name='LogIn' component={LogInScreen} />
@@ -129,9 +143,7 @@ const Navigation = () => {
           </Stack.Navigator>
         )}
 
-        {/* <Stack.Navigator initialRouteName='CaretakerHome' headerMode='none'>
-           <Stack.Screen name='CaretakerHome' component={CaretakerHome} />
-         </Stack.Navigator> */}
+        {/* */}
       </NavigationContainer>
     </AuthContext.Provider>
   );
