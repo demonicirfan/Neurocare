@@ -10,7 +10,11 @@ import {
   DiagnosisHome,
   Info,
 } from '../src/Screens/PatientScreens/Index';
-import { CaretakerHome } from '../src/Screens/CaretakerScreens/Index';
+import {
+  CaretakerHome,
+  Contacts,
+  ContactDetail as CTContactDetail,
+} from '../src/Screens/CaretakerScreens/Index';
 import {
   SplashScreen,
   LogInScreen,
@@ -133,6 +137,8 @@ const Navigation = () => {
                 headerMode='none'
               >
                 <Stack.Screen name='CaretakerHome' component={CaretakerHome} />
+                <Stack.Screen name='Contacts' component={Contacts} />
+                <Stack.Screen name='Detail' component={CTContactDetail} />
               </Stack.Navigator>
             )}
           </>

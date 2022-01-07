@@ -1,5 +1,4 @@
-import { Icon, Pressable, HStack, VStack, Text, IconButton } from 'native-base';
-import React from 'react';
+import { Icon, Pressable, HStack, VStack, Text, Center } from 'native-base';
 import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -16,7 +15,7 @@ function CTDiagnosisButton() {
       mx={'auto'}
       rounded={'xl'}
       onPress={() => {
-        navigation.navigate('Profile');
+        navigation.navigate('Contacts');
       }}
       my={'8'}
     >
@@ -29,24 +28,21 @@ function CTDiagnosisButton() {
         mx={'auto'}
         px={width * 0.04}
       >
-        <IconButton
-          rounded='full'
+        <Center
           bg={'white'}
-          size={'sm'}
-          icon={
-            <Icon
-              size='sm'
-              as={FontAwesome}
-              name='user-circle'
-              color='neurocare.orange2'
-              zIndex={'1'}
-              alignSelf={'center'}
-            />
-          }
-          onPress={() => {
-            console.log('hello');
-          }}
-        />
+          rounded={'full'}
+          borderWidth={'2px'}
+          borderColor={'white'}
+        >
+          <Icon
+            size='md'
+            as={FontAwesome}
+            name='user-circle'
+            color='neurocare.orange3'
+            zIndex={'1'}
+            alignSelf={'center'}
+          />
+        </Center>
 
         <VStack w={width * 0.53}>
           <Text fontSize={'lg'} fontWeight={'500'} fontFamily={'Poppins'}>

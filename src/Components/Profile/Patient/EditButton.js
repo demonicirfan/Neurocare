@@ -9,7 +9,7 @@ var height = Dimensions.get('window').height;
 const EditButton = () => {
   const navigation = useNavigation();
   const editPressed = () => {
-    navigation.navigate('PatientInfo');
+    navigation.navigate('Info');
   };
   return (
     <Pressable

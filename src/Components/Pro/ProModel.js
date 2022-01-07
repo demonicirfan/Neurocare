@@ -8,7 +8,7 @@ import {
   Text,
   Pressable,
 } from 'native-base';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
 const ProModel = () => {
   return (
@@ -54,18 +54,18 @@ const ProModel = () => {
             bg={'neurocare.blue'}
             alignItems='center'
             px='4'
-            py={'2'}
+            py={'3'}
             justifyContent={'space-between'}
-            space={'10'}
+            space={'16'}
           >
-            <Text color={'white'} fontSize={'2xl'} pl={'4'}>
+            <Text color={'white'} fontSize={'xl'} pl={'4'}>
               Buy Subscription
             </Text>
             <Icon
-              as={Ionicons}
-              name='md-chevron-forward'
+              size={'sm'}
+              as={FontAwesome}
+              name='angle-right'
               color={'white'}
-              size={'md'}
             />
           </HStack>
         </Pressable>

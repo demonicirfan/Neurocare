@@ -1,6 +1,6 @@
 import React from 'react';
 import { HStack, Text, VStack } from 'native-base';
-import GoBack from '../GoBack';
+import GoBack from './GoBack';
 
 const Header = (props) => {
   return (

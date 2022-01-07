@@ -19,7 +19,7 @@ const GoProHome = () => {
     <>
       <BottomSheet
         ref={sheetRef}
-        snapPoints={[height * 0.6, height * 0.3, 0]}
+        snapPoints={[height * 0.55, height * 0.44, 0]}
         initialSnap={2}
         borderRadius={24}
         renderContent={renderContent}
